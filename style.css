@@ -8,13 +8,36 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: #ffffff;
+    background: linear-gradient(135deg, #fafafa 0%, #ffffff 25%, #f5f5f5 50%, #ffffff 75%, #fafafa 100%);
+    background-attachment: fixed;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(233, 30, 99, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(233, 30, 99, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(194, 24, 91, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body > * {
+    position: relative;
+    z-index: 1;
 }
 
 /* Nawigacja */
 nav {
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 1rem 2rem;
     position: fixed;
     width: 100%;
@@ -25,12 +48,15 @@ nav {
     justify-content: space-between;
     align-items: center;
     transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(233, 30, 99, 0.1);
 }
 
 .logo-link {
     display: flex;
     align-items: center;
     text-decoration: none;
+    height: 100%;
+    background: #ffffff;
 }
 
 .nav-logo {
@@ -38,6 +64,10 @@ nav {
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
+    display: block;
+    background: #ffffff;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 .nav-logo:hover {
@@ -113,23 +143,24 @@ nav a:hover::after {
 
 /* Sekcje */
 section {
-    padding: 5rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+    z-index: 1;
 }
 
 section:first-of-type {
     margin-top: 70px;
-    padding-top: 4rem;
 }
 
 /* Strona główna */
 #home {
-    background: linear-gradient(135deg, #fce4ec 0%, #ffffff 50%, #f5f5f5 100%);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(252, 228, 236, 0.3) 50%, rgba(255, 255, 255, 0.95) 100%);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -138,28 +169,45 @@ section:first-of-type {
 #home::before {
     content: '';
     position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(233, 30, 99, 0.1) 0%, transparent 70%);
+    top: -30%;
+    right: -5%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(233, 30, 99, 0.08) 0%, rgba(233, 30, 99, 0.02) 40%, transparent 70%);
     border-radius: 50%;
+    animation: float 20s ease-in-out infinite;
 }
 
 #home::after {
     content: '';
     position: absolute;
-    bottom: -30%;
-    left: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(233, 30, 99, 0.08) 0%, transparent 70%);
+    bottom: -20%;
+    left: -5%;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(194, 24, 91, 0.06) 0%, rgba(194, 24, 91, 0.02) 40%, transparent 70%);
     border-radius: 50%;
+    animation: float 25s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(30px, -30px) scale(1.1);
+    }
 }
 
 .home-content {
     position: relative;
     z-index: 1;
+    background: transparent;
+    padding: 5rem 2rem 5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 0;
 }
 
 #home .logo-main {
@@ -168,10 +216,15 @@ section:first-of-type {
     max-height: 300px;
     height: auto;
     margin-bottom: 3rem;
-    filter: drop-shadow(0 15px 40px rgba(233, 30, 99, 0.2));
     animation: fadeInUp 1s ease;
     object-fit: contain;
     transition: transform 0.5s ease;
+    display: block;
+    background: #ffffff;
+    margin-left: auto;
+    margin-right: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 }
 
 #home .logo-main:hover {
@@ -211,7 +264,35 @@ section:first-of-type {
 
 /* O nas */
 #about {
-    background: white;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 250, 0.98) 100%);
+    position: relative;
+}
+
+#about > * {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+#about > h2:first-child,
+#about > h3:first-of-type,
+#about > p:first-of-type {
+    padding-top: 5rem;
+}
+
+#about > *:last-child {
+    padding-bottom: 5rem;
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.2), transparent);
 }
 
 #about h2 {
@@ -237,7 +318,33 @@ section:first-of-type {
 
 /* Oferta */
 #offer {
-    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    background: linear-gradient(180deg, rgba(250, 250, 250, 0.98) 0%, rgba(255, 255, 255, 0.98) 50%, rgba(245, 245, 245, 0.95) 100%);
+    position: relative;
+}
+
+#offer > * {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+#offer > h2:first-child {
+    padding-top: 5rem;
+}
+
+#offer > .service:last-child {
+    padding-bottom: 5rem;
+}
+
+#offer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.2), transparent);
 }
 
 #offer h2 {
@@ -257,6 +364,9 @@ section:first-of-type {
     box-shadow: 0 6px 20px rgba(233, 30, 99, 0.12);
     border-left: 5px solid #e91e63;
     transition: all 0.3s ease;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .service:hover {
@@ -291,7 +401,34 @@ section:first-of-type {
 
 /* Kontakt */
 #contact {
-    background: white;
+    background: linear-gradient(180deg, rgba(245, 245, 245, 0.95) 0%, rgba(255, 255, 255, 0.98) 100%);
+    position: relative;
+}
+
+#contact > * {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+#contact > h2:first-child,
+#contact > .contact-intro:first-of-type {
+    padding-top: 5rem;
+}
+
+#contact > .contact-grid:last-child {
+    padding-bottom: 5rem;
+}
+
+#contact::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(233, 30, 99, 0.2), transparent);
 }
 
 #contact h2 {
