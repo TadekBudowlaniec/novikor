@@ -856,7 +856,7 @@ img {
             drop-shadow(0 0 80px rgba(255, 255, 255, 1.0))
             drop-shadow(0 0 160px rgba(255, 255, 255, 1.0))
             drop-shadow(0 0 240px rgba(255, 255, 255, 1.0))
-            drop-shadow(0 0 240px rgba(255, 255, 255, 0.8))
+            drop-shadow(0 0 180px rgba(255, 255, 255, 0.1))
             drop-shadow(0 4px 20px rgba(0, 0, 0, 0.08));
     }
 
