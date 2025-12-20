@@ -718,7 +718,7 @@ img {
 }
 
 .contact-box a {
-    color: #e91e63;
+    color: #ffffff;
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -726,7 +726,7 @@ img {
 }
 
 .contact-box a:hover {
-    color: #c2185b;
+    color: #ffffff;
     transform: translateX(5px);
 }
 .map-button {
@@ -739,9 +739,9 @@ img {
     padding: 0.9rem 1.8rem;
     
     /* --- KLUCZOWE ZMIANY KOLORYSTYCZNE --- */
-    border: 2px;
+    
     /* 1. Tło domyślne - głęboki, wyraźny róż */
-    border-color: linear-gradient(135deg, #d81b60, #c2185b);
+    background: linear-gradient(135deg, #d81b60, #c2185b);
     
     /* 2. Kolor tekstu - BIAŁY dla najlepszego kontrastu */
     color: #ffffff;
@@ -749,7 +749,7 @@ img {
     /* ------------------------------------- */
     
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 16px;
     font-weight: 700;
     font-size: 1rem;
     
@@ -762,7 +762,8 @@ img {
     transform: translateY(-3px);
     /* Wzmocnienie cienia przy uniesieniu */
     box-shadow: 0 8px 25px rgba(216, 27, 96, 0.6);
-    
+    color: #ffffff;
+
     /* --- ZMIANA PRZY NAJECHANIU --- */
     /* Tło staje się CIEMNIEJSZE i bardziej nasycone po najechaniu, 
        dzięki czemu biały tekst nadal "świeci" */
@@ -775,6 +776,8 @@ img {
     box-shadow: 0 2px 10px rgba(216, 27, 96, 0.5);
     /* Jeszcze ciemniejsze tło przy kliknięciu */
     background: #ad1457;
+    color: #ffffff;
+
 }
 
 .map-button::before {
@@ -783,6 +786,8 @@ img {
     font-size: 1.2rem;
     /* Opcjonalnie: lekki cień pod ikonką, żeby lepiej pasowała do białego tekstu */
     text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    color: #ffffff;
+
 }
 /* Responsive */
 @media (max-width: 768px) {
