@@ -56,7 +56,6 @@ nav {
     align-items: center;
     text-decoration: none;
     height: 100%;
-    background: #ffffff;
 }
 
 .nav-logo {
@@ -65,7 +64,6 @@ nav {
     object-fit: contain;
     transition: transform 0.3s ease;
     display: block;
-    background: #ffffff;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
 }
